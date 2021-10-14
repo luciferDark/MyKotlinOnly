@@ -1,0 +1,46 @@
+/**
+ *  全局常量
+ */
+ext {
+    groupID = 'com.ll'
+    version = '1.0-SNAPSHOT'
+    jvmTarget_version = 1.8
+    /**
+     *  依赖库版本
+     */
+    dependency_version = [
+            lastversion                               :"latest.version",
+            retrofit2                                   :"2.9.0",
+            rxjava                                      :"2.1.2",
+            okhttp                                     :"3.0.1",
+    ]
+    /**
+     *  依赖库
+     * name: "groupName:ArtifactId:${dependency_version.name_version}",
+     */
+    dependency_base_kotlin = [
+            kotlin_stdlib : "org.jetbrains.kotlin:kotlin-stdlib-jdk8",
+    ]
+    dependency_base_okhttp = [
+            rxjava : "io.reactivex.rxjava2:rxjava:${dependency_version.rxjava}",
+    ]
+    dependency_base_rxjava = [
+            okhttp3 : "com.squareup.okhttp3:okhttp:${dependency_version.okhttp}",
+            okhttp3LoggingInterceptor : "com.squareup.okhttp3:logging-interceptor:${dependency_version.okhttp}",
+    ]
+    dependency_base_retrofit2 = [
+            retrofit2 : "com.squareup.retrofit2:retrofit:${dependency_version.retrofit2}",
+            converter_gson : "com.squareup.retrofit2:converter-gson:${dependency_version.retrofit2}",
+            converter_simplexml : "com.squareup.retrofit2:converter-simplexml:${dependency_version.retrofit2}",
+            converter_protobuf : "com.squareup.retrofit2:converter-protobuf:${dependency_version.retrofit2}",
+            adapter_rxjava : "com.squareup.retrofit2:adapter-rxjava2:${dependency_version.retrofit2}",
+    ]
+    dependency_excludes = [
+    ]
+    dependency = [
+            dependency_base_kotlin,
+            dependency_base_okhttp,
+            dependency_base_rxjava,
+            dependency_base_retrofit2,
+    ]
+}

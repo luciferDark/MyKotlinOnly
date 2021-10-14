@@ -1,0 +1,42 @@
+plugins {
+    id 'org.jetbrains.kotlin.jvm' version '1.2.51'
+}
+apply from : 'config.gradle'
+def ext = rootProject.ext
+println("group =>${ext.groupID}")
+println("version =>${ext.version}")
+group ext.groupID
+version ext.version
+
+repositories {
+    mavenCentral()
+}
+dependencies {
+    // base and other user dependencies
+    def dependency = ext.dependency
+    def dependency_excludes = ext.dependency_excludes
+    if (null != dependency) {
+        dependency.each { dependencyItem ->
+            if (null != dependencyItem) {
+                dependencyItem.each { k, v ->
+                    if (dependency_excludes.size > 0 && dependency_excludes.keySet().contains(k)) {
+                        compile(v) {
+                            println("compile package => ${v} => exclude => ${dependency_excludes.k}")
+                            exclude group: dependency_excludes.k
+                        }
+                    } else {
+                        println("compile package =>${v}")
+                        compile v
+                    }
+                }
+            }
+        }
+    }
+}
+
+compileKotlin {
+    kotlinOptions.jvmTarget = ext.jvmTarget_version
+}
+compileTestKotlin {
+    kotlinOptions.jvmTarget = ext.jvmTarget_version
+}
