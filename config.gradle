@@ -13,6 +13,7 @@ ext {
             retrofit2                                   :"2.9.0",
             rxjava                                      :"2.1.2",
             okhttp                                     :"3.0.1",
+            jsoup                                       :"1.11.3",
     ]
     /**
      *  依赖库
@@ -34,6 +35,10 @@ ext {
             converter_simplexml : "com.squareup.retrofit2:converter-simplexml:${dependency_version.retrofit2}",
             converter_protobuf : "com.squareup.retrofit2:converter-protobuf:${dependency_version.retrofit2}",
             adapter_rxjava : "com.squareup.retrofit2:adapter-rxjava2:${dependency_version.retrofit2}",
+            converter_scalars : "com.squareup.retrofit2:converter-scalars:${dependency_version.retrofit2}",
+    ]
+    dependency_base_jsoup = [
+            jsoup : "org.jsoup:jsoup:${dependency_version.jsoup}",
     ]
     dependency_excludes = [
     ]
@@ -42,5 +47,6 @@ ext {
             dependency_base_okhttp,
             dependency_base_rxjava,
             dependency_base_retrofit2,
+            dependency_base_jsoup,
     ]
 }
